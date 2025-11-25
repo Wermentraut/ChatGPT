@@ -1,28 +1,22 @@
-# ChatGPT
+# ChatGPT repo: краткое использование скриптов
+
+Все команды выполнять из `C:\Users\artem\Documents\GitHub\ChatGPT`.
+
+## calculator.py
+Простой калькулятор с вводом одной операции.
+- Запуск: `python calculator.py`
+- Вводите через пробел: `<a> <op> <b>` (пример: `2 + 3`, `10 / 4`, `2 ** 5`).
 
 ## inverse_finder.py
+Символьный поиск обратной функции с помощью SymPy.
+- Базовый пример:  
+  `python inverse_finder.py "x**2 + 3" --input-var x --output-var y`
+- Если выражение не передано, скрипт спросит его.
+- Ключи: `--input-var`, `--output-var`, `--inverse-input-var`, `--domain (real|complex)`.
 
-Symbolically inverts elementary functions with SymPy.
-
-### Usage
-
-```bash
-python inverse_finder.py "x**2 + 3" --input-var x --output-var y
-```
-
-Example output:
-
-```
-Function f(x) = x**2 + 3
-Inverse candidate(s) reported as y(x):
-  1. y = -sqrt(x - 3)
-  2. y = sqrt(x - 3)
-Verify each branch under your domain assumptions; inverse input variable is x.
-```
-
-Options (script will prompt for the expression if omitted):
-
-- `--input-var`: variable used in the original expression.
-- `--output-var`: symbol that will represent the input of the inverse function.
-- `--inverse-input-var`: which symbol to use for the inverse function's input (default: `x`).
-- `--domain`: `real` (default) or `complex` for the fallback solver.
+## zeta.py
+Вычисление дзета-функции Римана для действительных и комплексных s.
+- Демонстрация по умолчанию: `python zeta.py`
+- Свои значения без вопросов: `python zeta.py 2 -1 0.5+14j`
+- Интерактивный ввод: запустите без аргументов и введите числа через пробел (комплексные в виде `0.5+14j`).  
+- Настройка точности: `--max-terms 500000 --tol 1e-14` (например: `python zeta.py 2 --max-terms 500000 --tol 1e-14`).
