@@ -4,8 +4,8 @@ import google.generativeai as genai
 
 # ================= НАСТРОЙКИ =================
 
-DISCORD_TOKEN = "MTQ0Mjg3OTk0MzA5OTk0NTA5MQ.GtDlgW.kEVKqN8pzsTSTxqiIJOGHOgIDJhPurr7dRXnPk"
-GEMINI_API_KEY = "AIzaSyB4uQQ36W3BF0PgR5jhCqR2Xj7D_DzPogs"
+DISCORD_TOKEN = ""
+GEMINI_API_KEY = ""
 
 MODEL_NAME = "gemini-1.5-flash-latest"
 
