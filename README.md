@@ -1,33 +1,29 @@
-# ChatGPT repo: краткое использование скриптов
+# ChatGPT repo — сборник CLI-скриптов и дискорд-бота
 
-Все команды выполнять из `C:\Users\artem\Documents\GitHub\ChatGPT`.
+Каталог: `C:\Users\artem\Documents\GitHub\ChatGPT`. Все утилиты написаны на Python.
 
 ## calculator.py
-Простой калькулятор с вводом одной операции.
+Простой калькулятор: принимает строку вида `<a> <op> <b>` и считает результат. Поддерживаются `+`, `-`, `*`, `/`, `**`.
 - Запуск: `python calculator.py`
-- Вводите через пробел: `<a> <op> <b>` (пример: `2 + 3`, `10 / 4`, `2 ** 5`).
+- Примеры: `2 + 3`, `10 / 4`, `2 ** 5`
 
 ## inverse_finder.py
-Символьный поиск обратной функции с помощью SymPy.
-- Базовый пример:  
-  `python inverse_finder.py "x**2 + 3" --input-var x --output-var y`
-- Если выражение не передано, скрипт спросит его.
-- Ключи: `--input-var`, `--output-var`, `--inverse-input-var`, `--domain (real|complex)`.
+Пытается найти символический обратный оператор для функции `y = f(x)` через SymPy; если не удаётся — выводит неявное решение.
+- Пример: `python inverse_finder.py "x**2 + 3" --input-var x --output-var y`
+- Ключи: `--input-var`, `--output-var`, `--inverse-input-var`, `--domain (real|complex)`
 
 ## zeta.py
-Вычисление дзета-функции Римана для действительных и комплексных s.
-- Демонстрация по умолчанию: `python zeta.py`
-- Свои значения без вопросов: `python zeta.py 2 -1 0.5+14j`
-- Интерактивный ввод: запустите без аргументов и введите числа через пробел (комплексные в виде `0.5+14j`).  
-- Настройка точности: `--max-terms 500000 --tol 1e-14` (например: `python zeta.py 2 --max-terms 500000 --tol 1e-14`).
+Оценка функции Римана ζ(s) для вещественных и комплексных аргументов (ряд Дирихле η, точные значения для отрицательных целых).
+- Запуск без аргументов спросит значения и выведет демо-набор: `python zeta.py`
+- Пример с параметрами: `python zeta.py 2 -1 0.5+14j --max-terms 500000 --tol 1e-14`
 
-## discord_bot.py
-Discord-бот с ChatGPT-подобными ответами через локальный Ollama (бесплатно, без внешних API).
-- Установка: `pip install -U discord.py requests`
-- Создайте бота и токен: https://discord.com/developers/applications
-- Переменная токена:  
-  PowerShell: `$env:DISCORD_BOT_TOKEN="ваш_токен"`  
-  CMD: `set DISCORD_BOT_TOKEN=ваш_токен`
-- Ollama: https://ollama.com/download → `ollama pull llama3` (по умолчанию ждём http://127.0.0.1:11434). Можно менять `OLLAMA_URL`, `OLLAMA_MODEL`.
-- Запуск: `python discord_bot.py`
-- Команды: `!ping`, `!roll [max]`, `!gpt <сообщение>` (короткая история канала сохраняется для контекста).
+## inheritance_calc.py
+Черновой калькулятор распределения наследства: спрашивает суммы общего и личного имущества, наличие супруга, детей, родителей/бабушек-дедушек и печатает доли.
+- Запуск: `python inheritance_calc.py`
+- Вводите суммы в NOK, ответы «да/нет» и количество наследников по подсказкам.
+
+## bot.py
+Черновой Discord-бот на Gemini 1.5: команда `!ai <текст>` с историей сообщений, `!persona <роль>` задаёт стиль, `!reset` очищает историю, `!help` выводит подсказку.
+- Зависимости: `pip install -U discord.py google-generativeai`
+- Переменные окружения: `DISCORD_TOKEN`, `GEMINI_API_KEY`
+- Запуск: `python bot.py`
